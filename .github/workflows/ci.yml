@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  IMAGE: ${{ secrets.DOCKER_USERNAME }}/ilinus/repo-demo:latest
+  IMAGE: ${{ secrets.DOCKER_USERNAME }}/repo-demo:latest
 
 jobs:
   test:
@@ -40,6 +40,7 @@ jobs:
           exit-code: 1
 
       - name: Docker login
+        if: github.event_name == 'push'
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -58,4 +59,5 @@ jobs:
           exit-code: 1
 
       - name: Push image
+        if: github.event_name == 'push'
         run: docker push "$IMAGE"
