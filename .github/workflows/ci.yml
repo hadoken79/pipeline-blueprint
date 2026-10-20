@@ -6,7 +6,7 @@ on:
   pull_request:
 
 env:
-  IMAGE: ${{ secrets.DOCKER_USERNAME }}/trivy-demo:latest
+  IMAGE: ${{ secrets.DOCKER_USERNAME }}/ilinus/repo-demo:latest
 
 jobs:
   test:
