@@ -55,7 +55,7 @@ jobs:
         with:
           scan-type: image
           image-ref: ${{ env.IMAGE }}
-          scanners: vuln,secret,misconfig
+          scanners: vuln,secret
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: 1
@@ -63,3 +63,16 @@ jobs:
       - name: Push image
         if: github.event_name == 'push'
         run: docker push "$IMAGE"
+
+  sonar:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: SonarQube Cloud scan
+        uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9 # v8.3.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
