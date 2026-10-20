@@ -8,7 +8,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py .
 
 RUN useradd -m appuser
-USER appuser
+#USER appuser
 
 EXPOSE 8080
 
