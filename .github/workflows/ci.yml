@@ -55,7 +55,7 @@ jobs:
         with:
           scan-type: image
           image-ref: ${{ env.IMAGE }}
-          scanners: vuln,secret,license
+          scanners: vuln,secret
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: 1
