@@ -10,6 +10,8 @@ def index():
 
 @app.route("/health")
 def health():
+    secret=AWS_ACCESS_KEY_ID = "AKIAIOSFODNN7EXAMPLE"
+    print(secret)
     return jsonify({"status": "ok"})
 
 
