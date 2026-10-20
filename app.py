@@ -1,4 +1,6 @@
-from flask import Flask, jsonify
+import sqlite3
+
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -11,6 +13,18 @@ def index():
 @app.route("/health")
 def health():
     return jsonify({"status": "ok"})
+
+
+# @app.route("/user")
+# def get_user():
+#     username = request.args.get("username", "")
+#     conn = sqlite3.connect("users.db")
+#     cursor = conn.cursor()
+#     query = "SELECT * FROM users WHERE username = '" + username + "'"
+#     cursor.execute(query)
+#     rows = cursor.fetchall()
+#     conn.close()
+#     return jsonify({"users": rows})
 
 
 if __name__ == "__main__":

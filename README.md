@@ -25,6 +25,12 @@ python app.py   # http://localhost:8080
 
 1. Create a GitHub repo and push this code.
 2. Add repo secrets: `DOCKER_USERNAME`, `DOCKER_TOKEN` (DockerHub access token).
+3. SonarQube Cloud (optional job):
+   - Sign up at sonarcloud.io with your GitHub account (free for **public** repos)
+   - Import the repo; when asked for the analysis method, choose **CI-based** (or disable "Automatic Analysis" under Administration → Analysis Method)
+   - Create a token: My Account → Security → Generate Token
+   - Add GitHub secret `SONAR_TOKEN`
+   - Fill in `sonar.organization` and `sonar.projectKey` in `sonar-project.properties` (values shown in the SonarCloud project)
 
 ## Testing failure scenarios
 
